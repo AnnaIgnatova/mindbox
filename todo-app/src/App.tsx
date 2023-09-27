@@ -26,7 +26,11 @@ function App() {
   return (
     <>
       <div className="todo-wrapper">
-        <h2>Tasks</h2>
+        <header>
+          <h2>Tasks</h2>
+          <div>🚀</div>
+        </header>
+
         <TextInput addTodo={addTodoItem} value={todoValue} />
         <div>
           {Object.entries(todoList).map(([id, data]) => (

@@ -15,7 +15,7 @@
   align-items: center;
 }
 
-.checkbox-container > span {
+.checkbox-container span {
   color: #575767;
   font-size: 18px;
   font-weight: 500;
