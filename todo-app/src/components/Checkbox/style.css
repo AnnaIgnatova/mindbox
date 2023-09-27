@@ -23,7 +23,8 @@
 }
 
 .checkbox.checked {
-  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1' y='1' width='22' height='22' rx='4' fill='url(%23paint0_linear_104_91)'/%3E%3Cpath d='M8 13L10.9167 16L16 8' stroke='%23575767' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='1' y='1' width='22' height='22' rx='4' stroke='%23DADADA' stroke-width='2'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_104_91' x1='12' y1='0' x2='12' y2='24' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23FCFCFC'/%3E%3Cstop offset='1' stop-color='%23F8F8F8'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'%3E%3Cpath d='M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'/%3E%3C/svg%3E");
   position: relative;
-  background-position: contain;
+  background-position: center;
+  background-size: contain;
 }
