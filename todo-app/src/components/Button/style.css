@@ -1,0 +1,21 @@
+.base-button {
+  font-size: 14px;
+  font-weight: 300;
+  border: none;
+  background-color: transparent;
+  transition: 0.2s;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #838383;
+  font-family: "Inter", sans-serif;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.base-button:hover {
+  border: 1px solid #838383;
+}
+
+.active-button {
+  border: 1px solid #838383;
+}

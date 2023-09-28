@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./style.css";
 
 interface CheckboxProps {
-  id: string;
+  id: number;
   text: string;
   checked: boolean;
-  handleTodoItem: (id: string, checked: boolean) => void;
+  handleTodoItem: (id: number, checked: boolean) => void;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({

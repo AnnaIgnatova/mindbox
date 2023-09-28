@@ -1,29 +1,66 @@
-import { useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import "./App.css";
 import { TextInput } from "./components/TextInput";
 import { Checkbox } from "./components/Checkbox";
+import { Button } from "./components/Button";
 
-type TodoList = { [key: string]: { text: string; checked: boolean } };
+interface TodoList {
+  id: number;
+  text: string;
+  checked: boolean;
+}
+
+const LIST_LABELS = ["All", "Active", "Completed"];
 
 function App() {
   const [todoValue, setTodoValue] = useState("");
+  const [currentTodoList, setCurrentTodoList] = useState<TodoList[]>([]);
+  const [fullTodoList, setFullTodoList] = useState<TodoList[]>([
+    { id: 0, text: "task 1", checked: true },
+    { id: 1, text: "task 2", checked: false },
+  ]);
+  const [statusLabel, setStatusLabel] = useState<string>("All");
 
-  const [fullTodoList, setFullTodoList] = useState<TodoList>({
-    "0": { text: "task 1", checked: true },
-    "1": { text: "task 2", checked: false },
-  });
-  const [statusLabel, setStatusLabel] = useState<string>("all");
+  useEffect(() => {
+    getTodoListByLabel(statusLabel);
+  }, [statusLabel]);
 
-  const handleTodoItem = (id: string, checked: boolean) => {
-    setFullTodoList({
-      ...fullTodoList,
-      [id]: { ...fullTodoList[id], checked },
-    });
+  const handleTodoLabels: MouseEventHandler<HTMLButtonElement> = (e) => {
+    const target = e.target as HTMLButtonElement;
+    setStatusLabel(target.id);
+  };
+
+  const getTodoListByLabel = (label: string) => {
+    switch (label) {
+      case "All": {
+        setCurrentTodoList([...fullTodoList]);
+        break;
+      }
+      case "Active": {
+        const filterdList = fullTodoList.filter((item) => !item.checked);
+        setCurrentTodoList([...filterdList]);
+        break;
+      }
+      case "Completed": {
+        const filterdList = fullTodoList.filter((item) => item.checked);
+        setCurrentTodoList([...filterdList]);
+        break;
+      }
+    }
+  };
+
+  const handleTodoItem = (id: number, checked: boolean) => {
+    const newList = fullTodoList.map((item) =>
+      item.id === id ? { ...item, checked } : item
+    );
+    setFullTodoList(newList);
   };
 
   const addTodoItem = (text: string) => {
-    const itemsLength = Object.keys(todoList).length;
-    setTodoList({ ...todoList, [itemsLength]: { text, checked: false } });
+    setFullTodoList([
+      ...fullTodoList,
+      { id: fullTodoList.length, text, checked: false },
+    ]);
   };
   return (
     <>
@@ -35,22 +72,21 @@ function App() {
 
         <TextInput addTodo={addTodoItem} value={todoValue} />
         <div>
-          {Object.entries(todoList).map(([id, data]) => (
-            <Checkbox
-              key={id}
-              id={id}
-              handleTodoItem={handleTodoItem}
-              {...data}
-            />
+          {currentTodoList.map((data) => (
+            <Checkbox key={data.id} handleTodoItem={handleTodoItem} {...data} />
           ))}
         </div>
         <hr />
         <div>
           <span>2 items left</span>
           <div>
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            {LIST_LABELS.map((label) => (
+              <Button
+                text={label}
+                isActive={label === statusLabel}
+                onClick={handleTodoLabels}
+              />
+            ))}
           </div>
           <div>
             <button>Clear Completed</button>
