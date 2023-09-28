@@ -7,15 +7,17 @@ type TodoList = { [key: string]: { text: string; checked: boolean } };
 
 function App() {
   const [todoValue, setTodoValue] = useState("");
-  const [todoList, setTodoList] = useState<TodoList>({
+
+  const [fullTodoList, setFullTodoList] = useState<TodoList>({
     "0": { text: "task 1", checked: true },
     "1": { text: "task 2", checked: false },
   });
+  const [statusLabel, setStatusLabel] = useState<string>("all");
 
   const handleTodoItem = (id: string, checked: boolean) => {
-    setTodoList({
-      ...todoList,
-      [id]: { ...todoList[id], checked },
+    setFullTodoList({
+      ...fullTodoList,
+      [id]: { ...fullTodoList[id], checked },
     });
   };
 
@@ -41,6 +43,18 @@ function App() {
               {...data}
             />
           ))}
+        </div>
+        <hr />
+        <div>
+          <span>2 items left</span>
+          <div>
+            <button>All</button>
+            <button>Active</button>
+            <button>Completed</button>
+          </div>
+          <div>
+            <button>Clear Completed</button>
+          </div>
         </div>
       </div>
     </>
