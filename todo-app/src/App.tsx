@@ -21,11 +21,16 @@ function App() {
 
   useEffect(() => {
     getTodoListByLabel(statusLabel);
-  }, [statusLabel]);
+  }, [statusLabel, fullTodoList]);
 
   const handleTodoLabels: MouseEventHandler<HTMLButtonElement> = (e) => {
     const target = e.target as HTMLButtonElement;
     setStatusLabel(target.id);
+  };
+
+  const clearCompletedTasks = () => {
+    const filteredList = fullTodoList.filter((task) => !task.checked);
+    setFullTodoList([...filteredList]);
   };
 
   const getTodoListByLabel = (label: string) => {
@@ -70,7 +75,11 @@ function App() {
         ))}
       </div>
       <hr />
-      <Footer statusLabel={statusLabel} handleTodoLabels={handleTodoLabels} />
+      <Footer
+        statusLabel={statusLabel}
+        handleTodoLabels={handleTodoLabels}
+        clearCompletedTasks={clearCompletedTasks}
+      />
     </div>
   );
 }

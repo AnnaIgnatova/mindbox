@@ -4,12 +4,14 @@ import { Button } from "../UI/Button";
 interface FooterProps {
   statusLabel: string;
   handleTodoLabels: MouseEventHandler<HTMLButtonElement>;
+  clearCompletedTasks: MouseEventHandler<HTMLButtonElement>;
 }
 
 const LIST_LABELS = ["All", "Active", "Completed"];
 
 export const Footer: React.FC<FooterProps> = ({
   statusLabel,
+  clearCompletedTasks,
   handleTodoLabels,
 }) => {
   return (
@@ -25,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({
         ))}
       </div>
       <div>
-        <Button text="Clear Completed" onClick={() => {}} />
+        <Button text="Clear Completed" onClick={clearCompletedTasks} />
       </div>
     </div>
   );
