@@ -8,8 +8,7 @@ export const useTodoList = () => {
   const [currentTodoList, setCurrentTodoList] = useState<TodoItem[]>([]);
   const [statusLabel, setStatusLabel] = useState<string>("All");
 
-  const leftItemsCount =
-    fullTodoList.length ?? fullTodoList.filter((item) => !item.checked).length;
+  const leftItemsCount = fullTodoList.filter((item) => !item.checked).length;
 
   useEffect(() => {
     getTodoListByLabel(statusLabel);
