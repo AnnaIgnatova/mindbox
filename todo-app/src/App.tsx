@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import { TextInput } from "./components/UI/TextInput";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -17,10 +16,6 @@ function App() {
     handleTodoItem,
     clearCompletedTasks,
   } = useTodoList();
-
-  useEffect(() => {
-    console.log(currentTodoList);
-  }, [currentTodoList]);
 
   return (
     <div className="todo-wrapper">

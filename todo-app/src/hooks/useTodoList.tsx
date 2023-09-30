@@ -27,9 +27,7 @@ export const useTodoList = () => {
           break;
         }
         case "Active": {
-          console.log("here");
           const filteredList = fullTodoList.filter((item) => !item.checked);
-          console.log(filteredList);
           setCurrentTodoList([...filteredList]);
           break;
         }

@@ -7,12 +7,12 @@
   margin-right: 0.5em;
   border: 1px solid #575767;
   outline: none;
-  cursor: pointer;
 }
 
 .checkbox-container label {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .checkbox-container span {
