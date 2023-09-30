@@ -15,6 +15,13 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   handleTodoItem,
 }) => {
   const [value, setValue] = useState(checked);
+
+  const handleCheckbox = () => {
+    const checked = !value;
+    setValue(checked);
+    handleTodoItem(id, checked);
+  };
+
   return (
     <div className="checkbox-container">
       <label>
@@ -22,11 +29,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           type="checkbox"
           className={`checkbox ${checked ? " checked" : ""}`}
           checked={value}
-          onChange={() => {
-            const checked = !value;
-            setValue(checked);
-            handleTodoItem(id, checked);
-          }}
+          onChange={handleCheckbox}
         />
         <span>{text}</span>
       </label>

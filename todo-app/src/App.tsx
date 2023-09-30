@@ -4,11 +4,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { useTodoList } from "./hooks/useTodoList";
 import "./App.css";
-
-const defaultList = [
-  { id: 0, text: "task 1", checked: true },
-  { id: 1, text: "task 2", checked: false },
-];
+import { useEffect } from "react";
 
 function App() {
   const {
@@ -19,15 +15,20 @@ function App() {
     addTodoItem,
     handleTodoItem,
     clearCompletedTasks,
-  } = useTodoList(defaultList);
+  } = useTodoList();
+
+  useEffect(() => {
+    console.log(currentTodoList);
+  }, [currentTodoList]);
+
   return (
     <div className="todo-wrapper">
       <Header />
-      <TextInput addTodo={addTodoItem} />
+      <TextInput addTodo={addTodoItem} placeholder="What needs to be done?" />
       {currentTodoList.map((data) => (
         <Checkbox key={data.id} handleTodoItem={handleTodoItem} {...data} />
       ))}
-      <hr />
+      <hr className="wrap-line" />
       <Footer
         leftItemsCount={leftItemsCount}
         statusLabel={statusLabel}

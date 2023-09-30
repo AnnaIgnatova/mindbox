@@ -1,7 +1,8 @@
 import { MouseEventHandler } from "react";
 import { Button } from "../UI/Button";
-import "./style.css";
 import { TextBlock } from "../UI/TextBlock";
+
+import "./style.css";
 
 interface FooterProps {
   leftItemsCount: number;
@@ -25,13 +26,14 @@ export const Footer: React.FC<FooterProps> = ({
         {LIST_LABELS.map((label) => (
           <Button
             key={label}
-            text={label}
             isActive={label === statusLabel}
             onClick={handleTodoLabels}
-          />
+          >
+            {label}
+          </Button>
         ))}
       </div>
-      <Button text="Clear Completed" onClick={clearCompletedTasks} />
+      <Button onClick={clearCompletedTasks}>Clear Completed</Button>
     </div>
   );
 };
