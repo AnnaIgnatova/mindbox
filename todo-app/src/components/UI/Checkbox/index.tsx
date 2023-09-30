@@ -23,11 +23,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   };
 
   return (
-    <div className="checkbox-container">
+    <div className={`checkbox-container ${checked ? " checked" : ""}`}>
       <label>
         <input
           type="checkbox"
-          className={`checkbox ${checked ? " checked" : ""}`}
+          className="checkbox"
           checked={value}
           onChange={handleCheckbox}
         />

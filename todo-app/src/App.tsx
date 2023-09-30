@@ -1,10 +1,11 @@
+import { useEffect } from "react";
+
 import { TextInput } from "./components/UI/TextInput";
-import { Checkbox } from "./components/UI/Checkbox";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { useTodoList } from "./hooks/useTodoList";
+import { TodoContainer } from "./components/TodoContainer";
 import "./App.css";
-import { useEffect } from "react";
 
 function App() {
   const {
@@ -25,9 +26,11 @@ function App() {
     <div className="todo-wrapper">
       <Header />
       <TextInput addTodo={addTodoItem} placeholder="What needs to be done?" />
-      {currentTodoList.map((data) => (
-        <Checkbox key={data.id} handleTodoItem={handleTodoItem} {...data} />
-      ))}
+      <hr className="wrap-line" />
+      <TodoContainer
+        currentTodoList={currentTodoList}
+        handleTodoItem={handleTodoItem}
+      />
       <hr className="wrap-line" />
       <Footer
         leftItemsCount={leftItemsCount}

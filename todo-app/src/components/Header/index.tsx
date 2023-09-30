@@ -1,7 +1,9 @@
+import "./style.css";
+
 export const Header = () => {
   return (
-    <header>
-      <h2>Tasks</h2>
+    <header className="header">
+      <h2 className="header-title">Tasks</h2>
       <div>🚀</div>
     </header>
   );

@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-.checkbox-container > label {
+.checkbox-container label {
   display: flex;
   align-items: center;
 }
@@ -18,13 +18,17 @@
 .checkbox-container span {
   color: #575767;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 24px;
 }
 
-.checkbox.checked {
+.checkbox-container.checked input {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'%3E%3Cpath d='M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'/%3E%3C/svg%3E");
   position: relative;
   background-position: center;
   background-size: contain;
+}
+
+.checkbox-container.checked span {
+  text-decoration: line-through;
 }

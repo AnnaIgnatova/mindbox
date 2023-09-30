@@ -1,11 +1,11 @@
 import { MouseEventHandler, useCallback, useEffect, useState } from "react";
-import { TodoList } from "../types/todoList";
+import { TodoItem } from "../types/todoList";
 import { useStorage } from "./useStorage";
 
 export const useTodoList = () => {
   const [value, setValue] = useStorage("todoList");
-  const [fullTodoList, setFullTodoList] = useState<TodoList[]>(value);
-  const [currentTodoList, setCurrentTodoList] = useState<TodoList[]>([]);
+  const [fullTodoList, setFullTodoList] = useState<TodoItem[]>(value);
+  const [currentTodoList, setCurrentTodoList] = useState<TodoItem[]>([]);
   const [statusLabel, setStatusLabel] = useState<string>("All");
 
   const leftItemsCount =

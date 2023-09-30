@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import { TodoList } from "../types/todoList";
 
 const localStorageObject = window.localStorage;
 
