@@ -1,8 +1,9 @@
 import { MouseEventHandler, useEffect, useState } from "react";
 import "./App.css";
-import { TextInput } from "./components/TextInput";
-import { Checkbox } from "./components/Checkbox";
-import { Button } from "./components/Button";
+import { TextInput } from "./components/UI/TextInput";
+import { Checkbox } from "./components/UI/Checkbox";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 interface TodoList {
   id: number;
@@ -10,10 +11,7 @@ interface TodoList {
   checked: boolean;
 }
 
-const LIST_LABELS = ["All", "Active", "Completed"];
-
 function App() {
-  const [todoValue, setTodoValue] = useState("");
   const [currentTodoList, setCurrentTodoList] = useState<TodoList[]>([]);
   const [fullTodoList, setFullTodoList] = useState<TodoList[]>([
     { id: 0, text: "task 1", checked: true },
@@ -63,37 +61,17 @@ function App() {
     ]);
   };
   return (
-    <>
-      <div className="todo-wrapper">
-        <header>
-          <h2>Tasks</h2>
-          <div>🚀</div>
-        </header>
-
-        <TextInput addTodo={addTodoItem} value={todoValue} />
-        <div>
-          {currentTodoList.map((data) => (
-            <Checkbox key={data.id} handleTodoItem={handleTodoItem} {...data} />
-          ))}
-        </div>
-        <hr />
-        <div>
-          <span>2 items left</span>
-          <div>
-            {LIST_LABELS.map((label) => (
-              <Button
-                text={label}
-                isActive={label === statusLabel}
-                onClick={handleTodoLabels}
-              />
-            ))}
-          </div>
-          <div>
-            <button>Clear Completed</button>
-          </div>
-        </div>
+    <div className="todo-wrapper">
+      <Header />
+      <TextInput addTodo={addTodoItem} />
+      <div>
+        {currentTodoList.map((data) => (
+          <Checkbox key={data.id} handleTodoItem={handleTodoItem} {...data} />
+        ))}
       </div>
-    </>
+      <hr />
+      <Footer statusLabel={statusLabel} handleTodoLabels={handleTodoLabels} />
+    </div>
   );
 }
 

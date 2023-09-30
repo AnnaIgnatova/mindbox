@@ -3,7 +3,7 @@ import "./style.css";
 
 interface ButtonProps {
   text: string;
-  isActive: boolean;
+  isActive?: boolean;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
