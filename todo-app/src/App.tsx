@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { TextInput } from "./components/UI/TextInput";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -9,29 +8,35 @@ import "./App.css";
 function App() {
   const {
     currentTodoList,
-    statusLabel,
     leftItemsCount,
-    handleTodoLabels,
+    statusLabel,
     addTodoItem,
     handleTodoItem,
+    removeTodoItem,
+    editTodoItem,
     clearCompletedTasks,
+    handleTodoLabels,
   } = useTodoList();
 
   return (
     <div className="todo-wrapper">
       <Header />
-      <TextInput addTodo={addTodoItem} placeholder="What needs to be done?" />
+      <TextInput onSubmit={addTodoItem} placeholder="What needs to be done?" />
       <hr className="wrap-line" />
-      <TodoContainer
-        currentTodoList={currentTodoList}
-        handleTodoItem={handleTodoItem}
-      />
+      <div className="todo-container">
+        <TodoContainer
+          currentTodoList={currentTodoList}
+          handleTodoItem={handleTodoItem}
+          removeTodoItem={removeTodoItem}
+          editTodoItem={editTodoItem}
+        />
+      </div>
       <hr className="wrap-line" />
       <Footer
         leftItemsCount={leftItemsCount}
         statusLabel={statusLabel}
-        handleTodoLabels={handleTodoLabels}
         clearCompletedTasks={clearCompletedTasks}
+        handleTodoLabels={handleTodoLabels}
       />
     </div>
   );

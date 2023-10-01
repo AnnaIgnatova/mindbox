@@ -1,5 +1,4 @@
 .text-input {
-  outline: none;
   border: none;
   height: 32px;
   width: 100%;
@@ -9,4 +8,11 @@
 .text-input::placeholder {
   font-size: 16px;
   color: #aaaaaa;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }

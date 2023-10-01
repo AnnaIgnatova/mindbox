@@ -1,36 +1,50 @@
 import { useState } from "react";
 import "./style.css";
+import { Button } from "../Button";
+import { DoneIcon } from "../../../assets/icons/DoneIcon";
 
 interface TextInputProps {
   placeholder: string;
-  addTodo: (value: string) => void;
+  defaultValue?: string;
+  onSubmit: (value: string) => void;
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
-  addTodo,
   placeholder,
+  defaultValue,
+  onSubmit,
 }) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(defaultValue || "");
 
-  const submitInput: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    if (e.key === "Enter" && value) {
-      addTodo(value);
+  const handleSubmit = () => {
+    if (value) {
+      onSubmit(value);
       setValue("");
     }
+  };
+
+  const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === "Enter" && value) handleSubmit();
   };
 
   const handleInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setValue(e.target.value);
 
   return (
-    <input
-      data-testid="create-task"
-      className="text-input"
-      type="text"
-      value={value}
-      placeholder={placeholder}
-      onChange={handleInput}
-      onKeyDown={submitInput}
-    />
+    <div className="input-container">
+      <input
+        autoFocus={true}
+        data-testid="create-task"
+        className="text-input"
+        type="text"
+        value={value}
+        placeholder={placeholder}
+        onChange={handleInput}
+        onKeyDown={onKeyDown}
+      />
+      <Button onClick={handleSubmit}>
+        <DoneIcon />
+      </Button>
+    </div>
   );
 };

@@ -1,22 +1,31 @@
 import { TodoItem } from "../../types/todoList";
-import { Checkbox } from "../UI/Checkbox";
 import { TextBlock } from "../UI/TextBlock";
-import "./style.css";
+import { TodoListItem } from "./TodoItem";
 
 interface TodoContainerProps {
   currentTodoList: TodoItem[];
   handleTodoItem: (id: number, checked: boolean) => void;
+  removeTodoItem: (id: number) => (e: React.MouseEvent) => void;
+  editTodoItem: (id: number) => (text: string) => void;
 }
 
 export const TodoContainer: React.FC<TodoContainerProps> = ({
   currentTodoList,
   handleTodoItem,
+  removeTodoItem,
+  editTodoItem,
 }) => {
   return (
-    <div className="todo-container">
+    <div>
       {currentTodoList.length ? (
         currentTodoList.map((data) => (
-          <Checkbox key={data.id} handleTodoItem={handleTodoItem} {...data} />
+          <TodoListItem
+            key={data.id}
+            data={data}
+            handleTodoItem={handleTodoItem}
+            removeTodoItem={removeTodoItem(data.id)}
+            editTodoItem={editTodoItem(data.id)}
+          />
         ))
       ) : (
         <TextBlock>No data</TextBlock>

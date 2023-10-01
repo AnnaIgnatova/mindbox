@@ -61,6 +61,24 @@ export const useTodoList = () => {
     [fullTodoList]
   );
 
+  const editTodoItem = useCallback(
+    (id: number) => (text: string) => {
+      const newList = fullTodoList.map((task) =>
+        task.id === id ? { ...task, text } : task
+      );
+      setFullTodoList([...newList]);
+    },
+    [fullTodoList]
+  );
+
+  const removeTodoItem = useCallback(
+    (id: number) => (e: React.MouseEvent) => {
+      const newList = fullTodoList.filter((task) => task.id !== id);
+      setFullTodoList([...newList]);
+    },
+    [fullTodoList]
+  );
+
   const handleTodoLabels: MouseEventHandler<HTMLButtonElement> = useCallback(
     (e) => {
       const target = e.target as HTMLButtonElement;
@@ -80,6 +98,8 @@ export const useTodoList = () => {
     statusLabel,
     handleTodoItem,
     addTodoItem,
+    editTodoItem,
+    removeTodoItem,
     handleTodoLabels,
     clearCompletedTasks,
   };
