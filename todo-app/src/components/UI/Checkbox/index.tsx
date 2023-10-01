@@ -26,6 +26,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     <div className={`checkbox-container ${checked ? " checked" : ""}`}>
       <label>
         <input
+          data-testid="checkbox-item"
           type="checkbox"
           className="checkbox"
           checked={value}

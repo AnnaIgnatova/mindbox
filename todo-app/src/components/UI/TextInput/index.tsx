@@ -24,6 +24,7 @@ export const TextInput: React.FC<TextInputProps> = ({
 
   return (
     <input
+      data-testid="create-task"
       className="text-input"
       type="text"
       value={value}
