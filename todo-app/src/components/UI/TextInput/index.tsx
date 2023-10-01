@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./style.css";
 import { Button } from "../Button";
 import { DoneIcon } from "../../../assets/icons/DoneIcon";
+import "./style.css";
 
 interface TextInputProps {
   placeholder: string;
@@ -24,7 +24,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   };
 
   const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    if (e.key === "Enter" && value) handleSubmit();
+    if (e.key === "Enter") handleSubmit();
   };
 
   const handleInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>

@@ -22,6 +22,38 @@ describe("create task input", () => {
   });
 });
 
+describe("operation with task", () => {
+  beforeAll(() => {
+    const DEFAULT_LIST = [
+      { id: 0, text: "task 1", checked: false },
+      { id: 1, text: "task 2", checked: false },
+    ];
+    localStorage.clear();
+    localStorage.setItem("todoList", JSON.stringify(DEFAULT_LIST));
+  });
+  test("remove task", () => {
+    render(<App />);
+    const taskCountBefore = screen.getAllByTestId("checkbox-item").length;
+    expect(taskCountBefore).toEqual(2);
+    const removeButton = screen.getAllByTestId("remove-task-btn")[0];
+    fireEvent.click(removeButton);
+    const taskCountAfter = screen.getAllByTestId("checkbox-item").length;
+    expect(taskCountAfter).toEqual(1);
+  });
+  test("edit task by enter", () => {
+    render(<App />);
+    const editButton = screen.getAllByTestId("edit-task-btn")[0];
+    fireEvent.click(editButton);
+    const taskInput = screen.getAllByTestId("create-task")[1];
+    fireEvent.change(taskInput, {
+      target: { value: "task 1 by test library" },
+    });
+    fireEvent.keyDown(taskInput, { key: "Enter", code: "Enter", charCode: 13 });
+    const taskElement = screen.getAllByTestId("checkbox-label-item")[0];
+    expect(taskElement).toHaveTextContent("task 1 by test library");
+  });
+});
+
 describe("tasks container", () => {
   beforeAll(() => {
     const DEFAULT_LIST = [

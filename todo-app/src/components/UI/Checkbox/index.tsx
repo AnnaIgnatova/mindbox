@@ -32,7 +32,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           checked={value}
           onChange={handleCheckbox}
         />
-        <span>{text}</span>
+        <span data-testid="checkbox-label-item">{text}</span>
       </label>
     </div>
   );
