@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import "./style.css";
 import { Button } from "../../UI/Button";
 import { EditIcon } from "../../../assets/icons/EditIcon";
 import { DeleteIcon } from "../../../assets/icons/DeleteIcon";
 import { Checkbox } from "../../UI/Checkbox";
 import { TodoItem } from "../../../types/todoList";
 import { TextInput } from "../../UI/TextInput";
+import "./style.css";
 
 interface TodoListItemProps {
   data: TodoItem;
@@ -41,17 +41,17 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({
           onSubmit={handleSubmit}
         />
       ) : (
-        <Checkbox handleTodoItem={handleTodoItem} {...data} />
-      )}
-      {!editMode && (
-        <div className="buttons-container">
-          <Button onClick={handleEditMode}>
-            <EditIcon />
-          </Button>
-          <Button onClick={removeTodoItem}>
-            <DeleteIcon />
-          </Button>
-        </div>
+        <>
+          <Checkbox handleTodoItem={handleTodoItem} {...data} />
+          <div className="buttons-container">
+            <Button onClick={handleEditMode}>
+              <EditIcon />
+            </Button>
+            <Button onClick={removeTodoItem}>
+              <DeleteIcon />
+            </Button>
+          </div>
+        </>
       )}
     </div>
   );
