@@ -1,6 +1,7 @@
 import { TodoItem } from "../../types/todoList";
 import { TextBlock } from "../UI/TextBlock";
 import { TodoListItem } from "./TodoItem";
+import "./style.css";
 
 interface TodoContainerProps {
   currentTodoList: TodoItem[];
@@ -16,7 +17,7 @@ export const TodoContainer: React.FC<TodoContainerProps> = ({
   editTodoItem,
 }) => {
   return (
-    <div>
+    <div className="todo-list">
       {currentTodoList.length ? (
         currentTodoList.map((data) => (
           <TodoListItem

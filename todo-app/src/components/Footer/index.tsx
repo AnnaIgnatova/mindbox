@@ -21,7 +21,9 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   return (
     <div className="footer">
-      <TextBlock>{leftItemsCount} items left</TextBlock>
+      <div>
+        <TextBlock>{leftItemsCount} items left</TextBlock>
+      </div>
       <div>
         {LIST_LABELS.map((label) => (
           <Button
@@ -33,7 +35,9 @@ export const Footer: React.FC<FooterProps> = ({
           </Button>
         ))}
       </div>
-      <Button onClick={clearCompletedTasks}>Clear Completed</Button>
+      <div>
+        <Button onClick={clearCompletedTasks}>Clear Completed</Button>
+      </div>
     </div>
   );
 };

@@ -33,3 +33,13 @@
 .checkbox-container.checked span {
   text-decoration: line-through;
 }
+
+@media screen and (max-width: 650px) {
+  .checkbox {
+    width: 20px;
+    height: 20px;
+  }
+  .checkbox-container span {
+    font-size: 14px;
+  }
+}

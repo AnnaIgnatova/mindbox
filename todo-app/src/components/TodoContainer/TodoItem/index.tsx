@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 
 import "./style.css";
 import { Button } from "../../UI/Button";
@@ -7,7 +7,6 @@ import { DeleteIcon } from "../../../assets/icons/DeleteIcon";
 import { Checkbox } from "../../UI/Checkbox";
 import { TodoItem } from "../../../types/todoList";
 import { TextInput } from "../../UI/TextInput";
-import { useTodoList } from "../../../hooks/useTodoList";
 
 interface TodoListItemProps {
   data: TodoItem;

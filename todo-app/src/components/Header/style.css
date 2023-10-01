@@ -19,3 +19,22 @@
   font-weight: 800;
   line-height: normal;
 }
+
+@media screen and (max-width: 650px) {
+  .header > h2 {
+    font-size: 36px;
+  }
+  .header > div {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .header {
+    flex-direction: column-reverse;
+  }
+  .header > h2 {
+    font-size: 24px;
+  }
+}

@@ -7,3 +7,19 @@ body {
   box-sizing: border-box;
   margin: 0 auto;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  opacity: 0.4;
+}
+
+::-webkit-scrollbar {
+  background: #f0f3f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c6cc;
+  border-radius: 8px;
+}

@@ -16,3 +16,10 @@
   align-items: center;
   width: 100%;
 }
+
+@media screen and (max-width: 650px) {
+  .text-input,
+  .text-input::placeholder {
+    font-size: 14px;
+  }
+}

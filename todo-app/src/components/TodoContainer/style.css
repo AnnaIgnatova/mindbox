@@ -1,0 +1,9 @@
+.todo-list {
+  max-height: 40vh;
+  overflow-y: auto;
+}
+@media screen and (max-width: 560px) {
+  .todo-list {
+    max-height: 30vh;
+  }
+}
