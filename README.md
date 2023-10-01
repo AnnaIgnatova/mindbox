@@ -3,7 +3,7 @@
 
 ### ToDo List App
 
-![image](https://github.com/AnnaIgnatova/mindbox/assets/61065956/c5d47361-554b-462e-b082-c878b8c22d6b)
+![image](https://github.com/AnnaIgnatova/mindbox/assets/61065956/67c28f48-4a14-4587-b7bb-a89da57f955b)
 
 This app helps you to create plans for the day
 You can:
